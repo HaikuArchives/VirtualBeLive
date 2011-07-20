@@ -22,7 +22,6 @@ public:
 	void			OpenOpenPanel();
 	void			OpenSavePanel();
 	void			OpenOpenProjectPanel();
-	void			Splash();
 
 	virtual void	ReadyToRun();
 	virtual void	ArgvReceived(int32 argc, char **argv);

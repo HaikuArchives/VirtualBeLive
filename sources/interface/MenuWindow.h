@@ -17,15 +17,4 @@ private:
 	BMessage	*msg_begin;
 };
 
-class SplashScreen : public BWindow
-{
-public:
-			SplashScreen();
-			~SplashScreen();
-	virtual void	WindowActivated(bool active);
-private:
-	BView	*splashView;
-	BBitmap	*splashBitmap;
-};
-
 #endif

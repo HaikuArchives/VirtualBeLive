@@ -1,17 +1,19 @@
 #ifndef TRACKVIEW_H
 #define TRACKVIEW_H
 
+#include <Rect.h>
+#include <View.h>
 
-enum track_type(
+typedef enum {
 	AUDIO_TYPE,
 	VIDEO_TYPE,
 	UNKNOWN_TYPE
-	}
+} track_type;
 
 class TrackView : public BView
 {
 public:
-		TrackView(BRect frame, track_type t);
+		TrackView(BRect frame, char*, track_type t);
 		~TrackView();
 		
 	virtual void MessageReceived(BMessage *message);

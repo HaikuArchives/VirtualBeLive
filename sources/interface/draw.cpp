@@ -20,18 +20,7 @@ DrawApp::DrawApp()
 {
 	fOpenPanel = NULL;
 	fSelectPanel = NULL;
-	Splash();	
-	fMenuWin = new MenuWindow();
-	fMenuWin->Show();
-	sNumWindows++;
-//	OpenOpenPanel();
-	(TimeBox = new TimeWin)->Show();
-	(Rush = new rushwin)->Show(); //on affiche la rush
-	(FxBox = new Fxwin)->Show();	//on affiche la Fx BoX
-	(TransitBox = new Transitwin)->Show();	//on affiche la TransitBox
-	PopUp = new PopUpWin;
-	prefsWin = new ProjectPrefsWin(BRect(200, 250, 500, 410));
-
+	
 	renderer = NULL;
 }
 
@@ -53,21 +42,6 @@ DrawApp::~DrawApp()
 	delete filter8;
 */	
 	
-}
-
-void
-DrawApp::Splash()
-{
-	SplashScreen	*splashWin = new SplashScreen();
-		
-	splashWin->Show();
-	
-	bigtime_t	start, now;
-	start = now = system_time();
-	while ((now - start) < 1000000) // 5 secondes
-		now = system_time();
-	if (splashWin->Lock())
-		splashWin->Close();
 }
 
 void
@@ -142,7 +116,17 @@ status_t DrawApp::Save(BMessage *message)
 void
 DrawApp::ReadyToRun()
 {
-	
+	fMenuWin = new MenuWindow();
+	fMenuWin->Show();
+	sNumWindows++;
+//	OpenOpenPanel();
+	(TimeBox = new TimeWin)->Show();
+	(Rush = new rushwin)->Show(); //on affiche la rush
+	(FxBox = new Fxwin)->Show();	//on affiche la Fx BoX
+	(TransitBox = new Transitwin)->Show();	//on affiche la TransitBox
+	PopUp = new PopUpWin;
+	prefsWin = new ProjectPrefsWin(BRect(200, 250, 500, 410));
+
 	roster = BMediaRoster::Roster();
 //	media_node *timesourceNode = new media_node;
 //	roster->GetTimeSource(timesourceNode);
@@ -193,6 +177,7 @@ DrawApp::ReadyToRun()
 	filter7 = new MixFilter(NULL);
 	filter8 = new ColorFilter2(NULL);
 */
+
 }
 
 
@@ -221,7 +206,6 @@ DrawApp::MessageReceived(BMessage	*message)
 	void	*pointer;
 
 	bigtime_t now;
-	status_t	err;
 	switch (message->what) {
 		case B_SILENT_RELAUNCH:
 			OpenOpenPanel();
@@ -412,8 +396,7 @@ void DrawApp::PlayFile(const char *path)
 		
 	media_format	try_format;
 	roster->GetFormatFor(*output, &try_format);
-	media_input		*dummy1;
-	media_output	*dummy2;
+	
 	if ((err = roster->Connect(output->source, input->destination, &try_format, output, input)))
 	{
 		(new BAlert("Attention", strerror(err), "OK"))->Show();
@@ -451,6 +434,7 @@ int main(int argc, char **argv)
 {
 	DrawApp *app = new DrawApp();
 	app->Run();
+	
 	delete (app);
 			
 	return (B_NO_ERROR);

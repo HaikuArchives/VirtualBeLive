@@ -7,6 +7,8 @@
 #include <MenuItem.h>
 #include "consts.h"
 
+#include <stdio.h>
+
 //#define DEBUG
 
 MenuWindow::MenuWindow() 
@@ -93,32 +95,4 @@ void MenuWindow::InitMenu()
 MenuWindow::~MenuWindow()
 {
 	be_app->PostMessage(B_QUIT_REQUESTED);
-}
-
-SplashScreen::SplashScreen()
-	: BWindow(BRect(0, 0, kVBLlogoWidth - 1, kVBLlogoHeight + 1), "SplashScreen", B_BORDERED_WINDOW, 
-							B_NOT_CLOSABLE | B_NOT_RESIZABLE | B_NOT_MOVABLE | B_NOT_ZOOMABLE)
-{
-	BScreen		*theScreen = new BScreen(this);
-	BRect		screenRect = theScreen->Frame();
-	
-	MoveTo(screenRect.Width() / 2 - Frame().Width() / 2, screenRect.Height() / 2 - Frame().Height() / 2);
-	delete theScreen;
-}
-
-void SplashScreen::WindowActivated(bool active)
-{
-	if (active)
-	{
-		BRect	rect = Bounds();
-		splashView = new BView(rect, "splashview", B_FOLLOW_ALL_SIDES, B_WILL_DRAW);
-		AddChild(splashView);
-		splashBitmap = BTranslationUtils::GetBitmap("VBLogo");
-		splashView->SetViewBitmap(splashBitmap);
-	}
-}
-
-SplashScreen::~SplashScreen()
-{
-
 }

@@ -1,5 +1,7 @@
 #ifndef	POPUPWINDOW_H
 #define POPUPWINDOW_H
+#include <MediaNode.h>
+#include <TextControl.h>
 #include <Window.h>
 #include <View.h>
 #include "EventList.h"

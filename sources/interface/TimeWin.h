@@ -1,6 +1,8 @@
 #ifndef TIMEBOX_H
 #define TIMEBOX_H
 
+#include <MediaFile.h>
+#include <Slider.h>
 #include <Window.h>
 #include <View.h>
 #include <List.h>
