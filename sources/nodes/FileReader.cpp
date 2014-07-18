@@ -791,7 +791,7 @@ status_t FileReader::SendAdditionalBuffer()
 	uint32 *p = (uint32 *)buffer->Data();
 	track->ReadFrames(p, &fc);
 	/* Send the buffer on down to the consumer */
-	if (SendBuffer(buffer, fOutput.destination) < B_OK)
+	if (SendBuffer(buffer, fOutput.source, fOutput.destination) < B_OK)
 	{
 		PRINTF(-1, ("FrameGenerator: Error sending buffer\n"));
 		/* If there is a problem sending the buffer, return it to its
@@ -888,7 +888,7 @@ FileReader::FrameGenerator()
 		uint32 *p = (uint32 *)buffer->Data();
 		track->ReadFrames(p, &fc);
 		/* Send the buffer on down to the consumer */
-		if (SendBuffer(buffer, fOutput.destination) < B_OK) {
+		if (SendBuffer(buffer, fOutput.source, fOutput.destination) < B_OK) {
 			PRINTF(-1, ("FrameGenerator: Error sending buffer\n"));
 			/* If there is a problem sending the buffer, return it to its
 			 * buffer group. */

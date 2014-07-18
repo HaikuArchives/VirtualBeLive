@@ -5,6 +5,7 @@
 #include <Bitmap.h>
 #include <Window.h>
 #include <MediaNode.h>
+#include <MediaFile.h>
 #include <TranslationKit.h>
 #include <BufferConsumer.h>
 #include <TimedEventQueue.h>

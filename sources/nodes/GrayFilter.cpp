@@ -352,7 +352,7 @@ void GrayFilter::BufferReceived(BBuffer* pBuffer)
 	// process and retransmit buffer
 	filterBuffer(pBuffer);		
 
-	status_t err = SendBuffer(pBuffer, m_output.destination);
+	status_t err = SendBuffer(pBuffer, m_output.source, m_output.destination);
 	if (err < B_OK)
 	{
 		PRINT(("GrayFilter::BufferReceived():\n"

@@ -383,7 +383,7 @@ void FlipTransition::BufferReceived(BBuffer* pBuffer)
 		// process and retransmit buffer
 		MakeTransition(firstBuffer, secondBuffer);		
 	
-		status_t err = SendBuffer(transitionBuffer, m_output.destination);
+		status_t err = SendBuffer(transitionBuffer, m_output.source, m_output.destination);
 		if (err < B_OK)
 		{
 			PRINT(("FlipTransition::BufferReceived():\n"
