@@ -1,5 +1,6 @@
 VirtualBeLive
 =============
+![Screenshot of VirtualBeLive](VirtualBeLive.png)
 
 Open source video editing software for Haiku.
 
